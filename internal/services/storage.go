@@ -2,7 +2,6 @@ package services
 
 import (
 	"crypto/rand"
-	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -42,13 +41,18 @@ func NewStorageService(dataDir string) (*StorageService, error) {
 	return service, nil
 }
 
-// GenerateID generates a secure, URL-safe random ID.
+// GenerateID generates a secure, URL-safe random ID of 6 alphanumeric characters.
 func (s *StorageService) GenerateID() (string, error) {
-	bytes := make([]byte, 6) // 12 characters in hex
+	const alphabet = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ" // Safe alphanumeric chars (avoiding 1, l, 0, O)
+	const length = 6
+	bytes := make([]byte, length)
 	if _, err := rand.Read(bytes); err != nil {
 		return "", err
 	}
-	return hex.EncodeToString(bytes), nil
+	for i := 0; i < length; i++ {
+		bytes[i] = alphabet[int(bytes[i])%len(alphabet)]
+	}
+	return string(bytes), nil
 }
 
 // Save stores the snippet as a JSON file.

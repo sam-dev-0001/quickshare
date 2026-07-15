@@ -27,8 +27,8 @@ func TestStorageService(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to generate secure ID: %v", err)
 	}
-	if len(id) != 12 {
-		t.Errorf("Expected ID length of 12, got %d", len(id))
+	if len(id) != 6 {
+		t.Errorf("Expected ID length of 6, got %d", len(id))
 	}
 
 	// 4. Test Save & Get

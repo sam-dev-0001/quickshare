@@ -1,22 +1,22 @@
 {{template "base" .}}
 
-{{define "title"}}QuickShare Snippet - {{.Snippet.ID}} ({{.Snippet.Language}}){{end}}
+{{define "title"}}QuickShare Snippet - {{.Data.Snippet.ID}} ({{.Data.Snippet.Language}}){{end}}
 
-{{define "description"}}View code snippet or text shared securely via QuickShare. Written in {{.Snippet.Language}}.{{end}}
+{{define "description"}}View code snippet or text shared securely via QuickShare. Written in {{.Data.Snippet.Language}}.{{end}}
 
 {{define "content"}}
 <div class="view-container fade-in">
     <!-- Snippet Header / Metadata bar -->
     <div class="snippet-header">
         <div class="snippet-meta-info">
-            <span class="meta-item badge-language">{{.Snippet.Language}}</span>
-            <span class="meta-item">Created: <time class="timestamp">{{.FormattedCreatedAt}}</time></span>
+            <span class="meta-item badge-language">{{.Data.Snippet.Language}}</span>
+            <span class="meta-item">Created: <time class="timestamp">{{.Data.FormattedCreatedAt}}</time></span>
             <span class="meta-item text-muted">|</span>
             <span class="meta-item">
-                {{if .ExpiresAt.IsZero}}
+                {{if .Data.ExpiresAt.IsZero}}
                     <span class="expiry-badge badge-never">Never Expires</span>
                 {{else}}
-                    <span class="expiry-badge badge-expiring">Expires: <time class="timestamp">{{.FormattedExpiresAt}}</time></span>
+                    <span class="expiry-badge badge-expiring">Expires: <time class="timestamp">{{.Data.FormattedExpiresAt}}</time></span>
                 {{end}}
             </span>
         </div>
@@ -28,12 +28,12 @@
             </a>
 
             <!-- Raw view button -->
-            <a href="/raw/{{.Snippet.ID}}" target="_blank" class="btn btn-secondary">
+            <a href="/raw/{{.Data.Snippet.ID}}" target="_blank" class="btn btn-secondary">
                 <span>Raw</span>
             </a>
 
             <!-- Download button -->
-            <a href="/snippet/{{.Snippet.ID}}/download" class="btn btn-secondary">
+            <a href="/snippet/{{.Data.Snippet.ID}}/download" class="btn btn-secondary">
                 <span>Download</span>
             </a>
 
@@ -44,9 +44,30 @@
         </div>
     </div>
 
+    <!-- Beautiful Share Section -->
+    <div class="snippet-share-box">
+        <div class="share-section-left">
+            <div class="share-label-group">
+                <span class="share-label">Share Snippet</span>
+                <span class="share-code-badge" title="Short Share Code">Code: {{.Data.Snippet.ID}}</span>
+            </div>
+            <div class="share-input-wrapper">
+                <input type="text" id="share-link-input" class="share-input" value="{{.AppURL}}/snippet/{{.Data.Snippet.ID}}" readonly onclick="this.select()">
+            </div>
+        </div>
+        <div class="share-actions-group">
+            <button class="btn btn-secondary" onclick="copyShareCode('{{.Data.Snippet.ID}}')">
+                <span>Copy Code</span>
+            </button>
+            <button class="btn btn-primary" onclick="copyShareLink()">
+                <span>Copy Link</span>
+            </button>
+        </div>
+    </div>
+
     <!-- The actual code block -->
     <div class="code-viewer-wrapper">
-        <pre><code class="language-{{.Snippet.Language}}" id="snippet-code-block">{{.Snippet.Text}}</code></pre>
+        <pre><code class="language-{{.Data.Snippet.Language}}" id="snippet-code-block">{{.Data.Snippet.Text}}</code></pre>
     </div>
 
     <!-- Inline script to run highlight.js specifically on this code block -->

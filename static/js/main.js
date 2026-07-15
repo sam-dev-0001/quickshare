@@ -51,6 +51,41 @@ function copySnippetToClipboard() {
         });
 }
 
+// Copy full shareable link to clipboard
+function copyShareLink() {
+    const shareInput = document.getElementById('share-link-input');
+    if (!shareInput) {
+        showToast('Failed to find sharing link', 'error');
+        return;
+    }
+
+    navigator.clipboard.writeText(shareInput.value)
+        .then(() => {
+            showToast('Share link copied to clipboard!');
+        })
+        .catch(err => {
+            console.error('Failed to copy share link: ', err);
+            showToast('Failed to copy. Please copy manually.', 'error');
+        });
+}
+
+// Copy short share code to clipboard
+function copyShareCode(code) {
+    if (!code) {
+        showToast('Failed to find sharing code', 'error');
+        return;
+    }
+
+    navigator.clipboard.writeText(code)
+        .then(() => {
+            showToast('Share code copied to clipboard: ' + code);
+        })
+        .catch(err => {
+            console.error('Failed to copy share code: ', err);
+            showToast('Failed to copy. Please copy manually.', 'error');
+        });
+}
+
 // Character counter inside text editor
 function initCharacterCounter() {
     const textarea = document.getElementById('snippet-textarea');
@@ -123,3 +158,9 @@ function initTimestamps() {
         }
     });
 }
+
+// Bind sharing functions to window so they are globally accessible from inline onclick handlers
+window.copyShareLink = copyShareLink;
+window.copyShareCode = copyShareCode;
+window.copySnippetToClipboard = copySnippetToClipboard;
+
