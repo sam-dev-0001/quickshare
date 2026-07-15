@@ -1,0 +1,18 @@
+{{template "base" .}}
+
+{{define "title"}}Error {{.Status}} - QuickShare{{end}}
+
+{{define "content"}}
+<div class="error-container fade-in">
+    <div class="error-emoji">⚠️</div>
+    <h1 class="error-code">Error {{.Status}}</h1>
+    <h2 class="error-title">{{.Title}}</h2>
+    <p class="error-message">{{.Message}}</p>
+    
+    <div class="error-actions">
+        <a href="/" class="btn btn-primary">
+            <span>Go Back Home</span>
+        </a>
+    </div>
+</div>
+{{end}}

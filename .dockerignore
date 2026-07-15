@@ -1,0 +1,32 @@
+# Ignore compiled binaries and assets
+bin/
+data/
+*.exe
+*.test
+*.prof
+
+# Ignore node/vite specific files left from scaffolding
+node_modules/
+dist/
+src/
+package.json
+package-lock.json
+tsconfig.json
+vite.config.ts
+index.html
+
+# Ignore environment config and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Git configurations
+.git
+.gitignore
+.github
+
+# System files
+.DS_Store
+Thumbs.db

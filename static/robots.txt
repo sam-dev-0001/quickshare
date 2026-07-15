@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Disallow: /raw/
+Disallow: /snippet/*/download
+
+Sitemap: /sitemap.xml

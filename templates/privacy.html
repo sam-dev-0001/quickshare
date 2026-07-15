@@ -1,0 +1,30 @@
+{{template "base" .}}
+
+{{define "title"}}Privacy Policy - QuickShare Secure Sharing{{end}}
+
+{{define "content"}}
+<div class="static-page-container fade-in">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Effective Date: July 15, 2026. We respect your privacy and process zero tracking data.</p>
+    
+    <div class="static-content-section legal-text">
+        <h2>1. Information We Collect</h2>
+        <p>QuickShare is built with a minimal-data approach. We do not require usernames, passwords, emails, or phone numbers. The only data we actively process includes:</p>
+        <ul>
+            <li><strong>Snippet Content:</strong> The raw text or code you voluntarily copy, paste, and save on our platform.</li>
+            <li><strong>Selection Choices:</strong> Selected computer language classifications and expiration limits.</li>
+            <li><strong>Server logs:</strong> Standard web request headers (e.g. client IP address, date/time, requested paths, and transfer bytes) for security monitoring, spam prevention, and rate-limiting enforcement.</li>
+        </ul>
+
+        <h2>2. Data Storage and Retention</h2>
+        <p>All shared code snippets are recorded securely inside server files (JSON format) and do not connect to permanent, unmonitored relational databases. Your snippet is retained precisely for the duration selected during creation (10 minutes, 1 hour, 1 day, 1 week) or until manual removal. Expired snippets are deleted permanently from our server systems and cannot be recovered.</p>
+
+        <h2>3. Third-Party Services and Advertisements</h2>
+        <p>We partner with Google AdSense to display clean, non-intrusive advertisements across the platform. Google may collect user browser telemetry, screen sizes, or basic geographic hints to serve tailored contextual advertisements. Google uses cookies to serve ads based on prior website visits.</p>
+        <p>You may opt-out of personalized advertising by visiting <a href="https://settings.google.com/ads" target="_blank">Google Ads Settings</a>.</p>
+
+        <h2>4. Data Security</h2>
+        <p>We deploy modern industry-standard security headers, cross-site scripting (XSS) protections, cryptographic secure ID generation, and active client request rate-limiting to protect all stored files against unauthorized access, leaks, or server abuse.</p>
+    </div>
+</div>
+{{end}}

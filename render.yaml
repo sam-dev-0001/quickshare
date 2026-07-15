@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: quickshare
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: APP_URL
+        sync: false # User defines this dynamically based on Render's generated *.onrender.com service URL

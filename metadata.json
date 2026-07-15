@@ -1,0 +1,6 @@
+{
+  "name": "QuickShare",
+  "description": "Secure, lightweight, and fast text/code sharing platform powered by Go and HTMX.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

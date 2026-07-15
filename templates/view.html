@@ -1,0 +1,61 @@
+{{template "base" .}}
+
+{{define "title"}}QuickShare Snippet - {{.Snippet.ID}} ({{.Snippet.Language}}){{end}}
+
+{{define "description"}}View code snippet or text shared securely via QuickShare. Written in {{.Snippet.Language}}.{{end}}
+
+{{define "content"}}
+<div class="view-container fade-in">
+    <!-- Snippet Header / Metadata bar -->
+    <div class="snippet-header">
+        <div class="snippet-meta-info">
+            <span class="meta-item badge-language">{{.Snippet.Language}}</span>
+            <span class="meta-item">Created: <time class="timestamp">{{.FormattedCreatedAt}}</time></span>
+            <span class="meta-item text-muted">|</span>
+            <span class="meta-item">
+                {{if .ExpiresAt.IsZero}}
+                    <span class="expiry-badge badge-never">Never Expires</span>
+                {{else}}
+                    <span class="expiry-badge badge-expiring">Expires: <time class="timestamp">{{.FormattedExpiresAt}}</time></span>
+                {{end}}
+            </span>
+        </div>
+
+        <div class="snippet-actions">
+            <!-- Create New button -->
+            <a href="/" class="btn btn-secondary">
+                <span>New Snippet</span>
+            </a>
+
+            <!-- Raw view button -->
+            <a href="/raw/{{.Snippet.ID}}" target="_blank" class="btn btn-secondary">
+                <span>Raw</span>
+            </a>
+
+            <!-- Download button -->
+            <a href="/snippet/{{.Snippet.ID}}/download" class="btn btn-secondary">
+                <span>Download</span>
+            </a>
+
+            <!-- Copy button -->
+            <button id="copy-snippet-btn" class="btn btn-primary" onclick="copySnippetToClipboard()">
+                <span>Copy to Clipboard</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- The actual code block -->
+    <div class="code-viewer-wrapper">
+        <pre><code class="language-{{.Snippet.Language}}" id="snippet-code-block">{{.Snippet.Text}}</code></pre>
+    </div>
+
+    <!-- Inline script to run highlight.js specifically on this code block -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+    </script>
+</div>
+{{end}}

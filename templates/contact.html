@@ -1,0 +1,51 @@
+{{template "base" .}}
+
+{{define "title"}}Contact Support - QuickShare Help Desk{{end}}
+
+{{define "content"}}
+<div class="static-page-container fade-in">
+    <h1>Contact QuickShare Support</h1>
+    <p class="subtitle">Have questions, feedback, or need to report an abusive snippet? We're here to help.</p>
+    
+    <div class="static-content-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Direct Support</h2>
+                <p>For urgent security reports or DMCA takedown requests, please contact us directly via email. We review all reports within 24 hours.</p>
+                <p><strong>Email:</strong> <a href="mailto:support@quickshare.dev" class="contact-link">support@quickshare.dev</a></p>
+                <p>Please include the unique snippet ID (e.g. <code>4f2a71b...</code>) and a brief description of the issue.</p>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                <form id="contact-form" hx-post="/contact/submit" hx-swap="outerHTML" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" name="name" placeholder="Your Name" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <select id="contact-subject" name="subject" class="form-select">
+                            <option value="general">General Inquiry</option>
+                            <option value="abuse">Report Abuse / Spam</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="bug">Bug Report</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" placeholder="Type your message here..." required class="form-textarea"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

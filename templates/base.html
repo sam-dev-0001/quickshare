@@ -1,0 +1,122 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{{block "title" .}}QuickShare - Share Code and Notes Securely{{end}}</title>
+    <meta name="description" content="{{block "description" .}}QuickShare is a secure, lightweight, and fast text and code sharing platform. Share notes, snippets, and plain text with unique, secure links.{{end}}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{.AppURL}}{{block "canonical" .}}{{end}}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{.AppURL}}{{template "canonical" .}}">
+    <meta property="og:title" content="{{template "title" .}}">
+    <meta property="og:description" content="{{template "description" .}}">
+    <meta property="og:image" content="{{.AppURL}}/static/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{.AppURL}}{{template "canonical" .}}">
+    <meta property="twitter:title" content="{{template "title" .}}">
+    <meta property="twitter:description" content="{{template "description" .}}">
+    <meta property="twitter:image" content="{{.AppURL}}/static/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <!-- Custom Modern CSS3 Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- HTMX for AJAX interactions -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    <!-- Highlight.js for Code Snippet syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    {{block "head" .}}{{end}}
+</head>
+<body hx-headers='{"X-Requested-With": "XMLHttpRequest"}'>
+    <!-- Header Navigation -->
+    <header class="app-header">
+        <div class="header-container">
+            <a href="/" class="app-logo">
+                <span class="logo-accent">&lt;/&gt;</span> QuickShare
+            </a>
+            <nav class="app-nav">
+                <a href="/about" class="nav-link">About</a>
+                <a href="/contact" class="nav-link">Contact</a>
+                <a href="/privacy" class="nav-link">Privacy</a>
+                <a href="/terms" class="nav-link">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Grid with AdSense Responsive Layout -->
+    <main class="app-main-grid">
+        <!-- Top Ad Area (Responsive Banner) -->
+        <div class="adsense-placeholder banner-top-ad">
+            <div class="adsense-ad-tag">ADVERTISEMENT</div>
+            <!-- Google AdSense Code Placeholder -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- Central Working Stage -->
+        <section class="app-content-stage">
+            {{template "content" .}}
+        </section>
+
+        <!-- Bottom Ad Area (Responsive Banner) -->
+        <div class="adsense-placeholder banner-bottom-ad">
+            <div class="adsense-ad-tag">ADVERTISEMENT</div>
+            <!-- Google AdSense Code Placeholder -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="YYYYYYYYYY"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 QuickShare. Made for developers and creators. No tracking, no cookies, pure speed.</p>
+            <div class="footer-links">
+                <a href="/about">About Us</a>
+                <a href="/contact">Support</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Global JavaScript for general enhancements (Copy, toasts, character counter) -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,26 @@
+{{template "base" .}}
+
+{{define "title"}}About QuickShare - Fast, Lightweight, Secure Code Sharing{{end}}
+
+{{define "content"}}
+<div class="static-page-container fade-in">
+    <h1>About QuickShare</h1>
+    <p class="subtitle">QuickShare is a secure, lightweight, and modern text and code sharing platform built for speed, safety, and ultimate productivity.</p>
+    
+    <div class="static-content-section">
+        <h2>Our Core Philosophy</h2>
+        <p>In a world of bloated, tracker-heavy pastebins, QuickShare was designed from the ground up to offer an alternative focused on <strong>essential utility</strong> and <strong>privacy</strong>. We do not require account registration, do not use persistent browser cookies, and do not profile or track our users.</p>
+        
+        <h2>Key Architecture Features</h2>
+        <ul>
+            <li><strong>Ultimate Speed:</strong> Built using highly optimized, compiled Go code for server-side processing coupled with HTMX for seamless partial page replacements. No massive JavaScript bundle payloads.</li>
+            <li><strong>Privacy First:</strong> Your shares belong to you. We support automatic, secure cryptographic identifiers and immediate self-cleaning expiration counters ranging from 10 minutes to a week.</li>
+            <li><strong>Syntax Highlighting:</strong> Supports beautiful visual highlighting across 12 popular computer, query, and markup languages out-of-the-box using the powerful Highlight.js engine.</li>
+            <li><strong>Robust Security:</strong> Full protection against XSS injections, clickjacking, mime sniffing, and severe rate limiting to block automated abuse or spam bots.</li>
+        </ul>
+
+        <h2>AdSense Support and Monetization</h2>
+        <p>To keep QuickShare running free and accessible for developers globally without intrusive subscriptions, we reserve premium, responsive ad placements. All ads are delivered cleanly and respect user experience boundaries as mandated by Google AdSense policies.</p>
+    </div>
+</div>
+{{end}}
